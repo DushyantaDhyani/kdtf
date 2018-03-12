@@ -26,9 +26,9 @@ Train the Student Model (Using Soft Targets from the teacher model)
 
      python main.py --model_type student --checkpoint_dir studentcpt --load_teacher_from_checkpoint true --load_teacher_checkpoint_dir teachercpt --num_steps 5000 --temperature 5
      
-### Results
+### Results (For different temperature values)
 
-| Model        | Accuracy  - 2 | Accuracy - 5 |
+| Model        | Accuracy - 2  | Accuracy - 5 |
 | -------------|:-------------:| -------------|  
 | Teacher Only | 97.9          | 98.12        |      
 | Distillation | 89.14         |  90.77       |  
