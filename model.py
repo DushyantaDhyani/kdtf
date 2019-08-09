@@ -167,6 +167,7 @@ class BigModel:
                 if acc > max_accuracy:
                     save_path = self.saver.save(self.sess, self.checkpoint_path)
                     print("Model Checkpointed to %s " % (save_path))
+                    max_accuracy = acc
 
                 print("Step " + str(step) + ", Validation Loss= " + "{:.4f}".format(
                     loss) + ", Validation Accuracy= " + "{:.3f}".format(acc))
@@ -353,6 +354,7 @@ class SmallModel:
             if acc > max_accuracy:
                 save_path = self.saver.save(self.sess, self.checkpoint_path)
                 print("Model Checkpointed to %s " % (save_path))
+                max_accuracy = acc
 
             print("Step " + str(step) + ", Validation Loss= " + "{:.4f}".format(
                 loss) + ", Validation Accuracy= " + "{:.3f}".format(acc))
