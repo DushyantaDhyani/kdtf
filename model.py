@@ -354,10 +354,10 @@ class SmallModel:
             if acc > max_accuracy:
                 save_path = self.saver.save(self.sess, self.checkpoint_path)
                 print("Model Checkpointed to %s " % (save_path))
-                max_accuracy = acc
 
             print("Step " + str(step) + ", Validation Loss= " + "{:.4f}".format(
                 loss) + ", Validation Accuracy= " + "{:.3f}".format(acc))
+            return max(acc, max_accuracy)
 
         for step in range(1, self.num_steps + 1):
             batch_x, batch_y = train_data.next_batch(self.batch_size)
@@ -374,7 +374,7 @@ class SmallModel:
                                                   self.softmax_temperature: self.temperature}
                                        )
             if (step % self.display_step) == 0 or step == 1:
-                dev_step()
+                max_accuracy = dev_step()
         else:
             # Final Evaluation and checkpointing before training ends
             dev_step()
